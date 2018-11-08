@@ -1,0 +1,155 @@
+:root {
+    --primary: #48bae7;
+    --primarydarl: #41acd6;
+    --title:rgb(144, 144, 144);
+    --titlefade:#333333a8;
+}
+.background {
+    /* background-image: url("../images/background.jpg"); */
+    background: linear-gradient(128deg, #48bae7, #b940ac);
+    color: black;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.ui.menu {
+    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;
+    border: 0px !important;
+    height: 60px;
+    padding-right: 9em;
+    padding-left: 9em;
+    font-family: 'karla', sans-serif !important;
+}
+
+.logo{    
+    font-family: 'rubik', sans-serif !important;
+    font-size: 20px;        
+    font-weight: 700 !important;    
+    color: var(--primary) !important;        
+}
+
+.ui.top.fixed.menu{
+    margin-top: 0%;        
+}
+
+.right.menu>a {
+    color: rgb(144, 144, 144) !important;    
+}
+
+.labelform{
+    color: #33333341 !important;
+}
+.labeldaftar{
+    text-align: center;
+    margin-top: 1em !important;
+}
+.ui.card{
+    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.3) !important;
+    border-radius: 10px !important;
+}
+
+
+
+#btnMasuk {
+    background: #48bae7 !important;
+    color: white;     
+    margin-top: 4em;    
+    line-height: 1.5;   
+    border-radius: 5px !important; 
+}
+
+#btnMasuk:hover {
+    background: #41acd6 !important;
+}
+
+
+#heading {
+    font-family: 'rubik', sans-serif !important;
+    font-weight: 600 !important;
+    color: rgb(255, 255, 255);
+    text-align: left !important;
+    font-size: 43px;
+    line-height: 1;
+    padding-top: 1em;
+}
+
+#tagline{
+    font-family: 'karla', sans-serif !important;     
+    color: rgb(255, 255, 255);
+    font-size: 17px !important;
+    font-weight: 400 !important;
+    padding-top: 1.4em;
+    line-height: 1.5;
+}
+
+#taglogin{
+    font-family: 'karla', sans-serif !important;         
+    font-weight: 400 !important;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 3em;
+    margin-top: 2em;
+    color: var(--title);
+}
+
+#formlogin{
+    font-family: 'karla', sans-serif !important;         
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-bottom: 2em;
+}
+
+#left-container{
+    margin-top: 14em;  
+    margin-left: 12em;      
+}
+
+#right-container{
+    margin-top: 5em;        
+    
+}
+
+input{
+    border: none !important;
+    border-bottom: 1px solid #48bae7 !important;
+    border-radius: 0 !important;
+    padding: 0.2em !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    font-family: 'karla', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+}
+
+@media only screen and (max-width: 768px) {    
+    #left-container{
+        margin-top: 5em !important;
+    }
+    #right-container, #left-container{
+        margin-left: 2em !important;
+        margin-right: 2em !important; 
+    }
+    .ui.menu {
+        padding-left: 2em !important;
+        padding-right: 2em !important;
+    }
+    .bars.item {
+        display: flex !important;
+        visibility: visible !important;
+    }
+    #btnDaftar {
+        display: none;
+    }    
+    body{
+        background: linear-gradient(128deg, #48bae7, #b940ac) !important;
+        color: black;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed; 
+    }
+}

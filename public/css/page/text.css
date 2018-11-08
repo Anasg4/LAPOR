@@ -1,0 +1,22 @@
+
+/* HEADING start*/
+.heading{
+    font-family: 'rubik', sans-serif !important;
+    font-weight: 600 !important;
+    color: rgb(255, 255, 255);
+    text-align: left !important;
+    font-size: 43px;
+    line-height: 1;
+    padding-top: 1em;
+}
+
+.subheading{
+    font-family: 'karla', sans-serif !important;     
+    color: rgb(255, 255, 255);
+    font-size: 17px !important;
+    font-weight: 400 !important;
+    padding-top: 1.4em;
+    line-height: 1.5;
+}
+/* HEADING end */
+

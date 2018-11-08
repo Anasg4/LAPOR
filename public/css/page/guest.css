@@ -1,0 +1,80 @@
+@import "form.css";
+@import "menubar.css";
+@import "text.css";
+
+:root {
+    --primary: #48bae7;
+    --primarydark: #41acd6;
+    --title:rgb(144, 144, 144);
+    --titlefade:#333333a8;
+    --background-primary:#fff;
+    --fade: #333333c2;
+}
+
+.background {    
+    background: linear-gradient(128deg, #48bae7, #b940ac);
+    color: black;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+/* ASSET for menubar */
+
+/* SECTION PLAIN start */
+.section.basic{
+    background: var(--background-primary);
+    padding: 5em;
+    height: 100%;
+}
+
+#section-left{
+    padding-left: 12em !important;
+    padding-top: 14em !important;
+}
+#section-right{
+    margin-top: 5em;    
+}
+/* SECTION PLAIN end */
+
+#main-container{
+    padding-top: 0;
+    padding-bottom: 0;    
+    height: inherit !important;
+    display: block !important;
+}
+
+#formlogin{
+    font-family: 'karla', sans-serif !important;         
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-bottom: 2em;
+}
+
+
+
+@media only screen and (max-width: 768px) {    
+
+    .ui.menu {
+        padding-left: 2em !important;
+        padding-right: 2em !important;
+    }
+
+    #section-left{
+        padding-top: 70px !important;
+    }
+
+    #section-left, #main-container{
+        padding-left: 3em !important;
+        padding-right: 3em !important;
+    }
+   .section.basic{
+       padding-left: 0em !important;
+       padding-right: 0em !important;
+       padding-top: 2em !important;
+       padding-bottom: 2em !important;
+       border-radius: 10px !important;
+   }
+   
+}

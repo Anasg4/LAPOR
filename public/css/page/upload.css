@@ -1,0 +1,98 @@
+@import "menubar.css";
+@import "form.css";
+:root {
+    --primary: #48bae7;
+    --primarydark: #41acd6;
+    --title: rgb(144, 144, 144);
+    --titlefade: #333333a8;
+    --background-primary: #fff;
+    --fade: #333333c2;
+}
+
+.background {
+    background: linear-gradient(128deg, #48bae7, #b940ac);
+    color: black;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.content {
+    margin-top: 5em;
+}
+
+.form.box {
+    margin-top: 2em !important;
+}
+
+.ui.fluid.card {
+    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;
+    padding: 1px !important;
+    border: 0 !important;
+}
+
+.step {
+    font-family: 'karla', sans-serif !important;
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+    border: 0 !important;
+}
+
+.steps {
+    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;
+    border: 0 !important;
+}
+
+.button {
+    font-family: 'karla', sans-serif !important;
+    margin-bottom: -2px !important;
+    background: #48bae7 !important;
+    color: white !important;
+    height: 3em !important;
+}
+
+.button:hover {
+    background: var(--primarydark) !important;
+}
+
+#buttongambar {
+    margin-bottom: 10px !important;
+}
+
+.ui.action.input {
+    width: 100% !important;
+    border: 1px !important;
+}
+
+.form.container {
+    position: relative;
+}
+
+#formdetail {
+    position: absolute;
+}
+
+#formbukti {
+    position: absolute;
+    opacity: 0;
+    margin-top: 0;
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .ui.menu {
+        padding-left: 2em !important;
+        padding-right: 2em !important;
+    }
+    .content {
+        margin-top: 2em !important;
+    }
+    
+    #content{
+        margin-top: 3em !important;
+        margin-left: 0.5em !important;
+        margin-right: 0.5em !important;
+    }
+}
