@@ -1,23 +1,27 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LAPOR - Home</title>
+</head>
+<body>
+    <div>
+        {{ Auth::check() }}
+        {{ Auth::user() }}
     </div>
-</div>
-@endsection
+    <div>
+        @foreach ($reports as $report)
+            <div>
+                <a href="/report/{{ $report['id'] }}">{{ $report['violation'] }}</a>
+            </div>
+        @endforeach
+    </div>
+    <div>
+        <a href="/logout">LOGOUT</a>
+    </div>
+
+
+</body>
+</html>

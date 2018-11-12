@@ -11,13 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UserController@index')->middleware('auth');
 
-// Auth::routes();
+Route::get('/register', 'UserController@showRegistration');
+Route::get('/register2', 'UserController@showRegistrationPlain');
+Route::post('/register', 'UserController@register');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/login', 'UserController@showLogin')->name('login');
+Route::get('/login2', 'UserController@showLoginPlain');
+Route::post('/login', 'UserController@login');
+Route::get('/logout', 'UserController@logout');
 
-Route::get('/register', 'UserController@create');
-Route::post('/register', 'UserController@store');
+Route::resource('report', 'ReportController')->middleware('auth');
+
+Route::get('/admin', 'AdminController@index')->middleware('admin');

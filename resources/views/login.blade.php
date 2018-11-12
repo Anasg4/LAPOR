@@ -48,7 +48,14 @@
                 <div class="ui fluid card">
                     <div class="content">
                         <p class="title form center" id="taglogin">Silakan masuk menggunakan <br> akun yang telah ada</p>
-                        <form action="" class="ui form" id="formlogin" action="index.html">
+
+                        @if($errors)
+                            @foreach ($errors as $error)
+                                {{ $item }}
+                            @endforeach
+                        @endif
+
+                        <form action="/login" class="ui form" id="formlogin" action="post">
                             <div class="field">
                                 <label class="label form">
                                     NIK
@@ -70,7 +77,7 @@
                                 </div>
                             </div>
 
-                            <div class="ui fluid button form" id="btnMasuk">MASUK</div>
+                            <button class="ui fluid button form" type="submit">MASUK</button>
                             <p class="label form">Belum punya akun, daftar <a href="daftar.html">di sini</a></p>
                         </form>
                     </div>

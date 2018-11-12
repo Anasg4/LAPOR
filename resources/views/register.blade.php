@@ -19,11 +19,11 @@
 <body class="background">
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
-        <div class="item logo" href="/">
+        <div class="item logo" href="#">
             LAPOR
         </div>
         <div class="right menu">
-            <a class="item" href="/about">TENTANG</a>
+            <a class="item" href="#">TENTANG</a>
             <a class="item" href="/login">MASUK</a>
         </div>
     </div>
@@ -46,6 +46,14 @@
             <div class="section basic">
                 <div class="content">
                     <p class="title center form" id="taglogin">Silakan isi form <br> menggunakan data anda</p>
+
+                    @if($errors->has('nik'))
+                        {{ $errors->first('nik') }}
+                    @endif
+                    @if($errors->has('email'))
+                        {{ $errors->first('email') }}
+                    @endif
+
                     <form action="/register" class="ui form" id="formlogin" method="POST">
 
                         @csrf
@@ -54,15 +62,15 @@
                             <label class="label form">
                                 NAMA LENGKAP
                             </label>
-                            <input type="text" name="name" id="name">
-                            <div class="ripple form" target="name"></div>
+                            <input type="text" name="name" id="name" value="{{ Request::old('name') }}">
+                            <div class="ripple form" target="nama"></div>
                         </div>
                         <div class="field">
                             <label class="label form">
                                 NIK
                             </label>
-                            <input type="text" name="nik" id="nik">
-                            <div class="ripple form" target="nik"></div>
+                            <input type="text" name="nik" id="nik" value="{{ Request::old('nik') }}">
+                            <div class="ripple form" target="NIK"></div>
                         </div>
                         <div class="field">
                             <label class="label form">
@@ -75,7 +83,7 @@
                             <label class="label form">
                                 EMAIL
                             </label>
-                            <input type="email" name="email" id="email">
+                            <input type="email" name="email" id="email" value="{{ Request::old('email') }}">
                             <div class="ripple form" target="email"></div>
                         </div>
                         <button class="ui fluid button form" type="submit">DAFTAR</button>
