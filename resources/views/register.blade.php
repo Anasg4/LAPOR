@@ -64,7 +64,7 @@
                                 NAMA LENGKAP
                             </label>
                             <input type="text" name="name" id="name" value="{{ Request::old('name') }}">
-                            <div class="ripple form" target="nama"></div>
+                            <div class="ripple form" target="name"></div>
                         </div>
                         <div class="field">
                             <label class="label form">

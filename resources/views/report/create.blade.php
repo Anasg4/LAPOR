@@ -21,10 +21,10 @@
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
         <a class="item logo" href="index.html">
-            Lapor.        
-        </a>        
+            Lapor.
+        </a>
         <div class="right menu">
-            <a class="item" href="#">Bantuan</a>            
+            <a class="item" href="#">Bantuan</a>
             <a href="/login" class="item">
                 <div class="ui button menubar">Keluar</div>
             </a>
@@ -34,13 +34,13 @@
     <div class="ui column centered stackable grid">
 
         <!-- Upload Form -->
-        <div class="ui eight wide centered column content" id="content">
+        <div class="ui eight wide centered column content-laporan" id="content">
 
             <div class="form container">
                 <!-- Detail -->
                 <div class="ui fluid card" id="formdetail">
                     <div class="content">
-                        <form action="/report" class="ui form box">
+                        <form action="/report" class="ui form box" id="form-laporan" method="POST" enctype="multipart/form-data">
 
                             @csrf
                             <div class="field">
@@ -52,10 +52,10 @@
                                     <i class="dropdown icon"></i>
                                     <div class="default text">Jenis pelanggaran</div>
                                     <div class="menu">
-                                        <div class="item" data-value="1">Pelanggaran Rambu</div>
-                                        <div class="item" data-value="2">Kelengkapan Berkendara</div>
-                                        <div class="item" data-value="3">Melawan Arus</div>
-                                        <div class="item" data-value="4">Kendaraan Tidak Sesuai Standar</div>
+                                        <div class="item" data-value="Pelanggaran Rambu">Pelanggaran Rambu</div>
+                                        <div class="item" data-value="Kelengkapan Berkendara">Kelengkapan Berkendara</div>
+                                        <div class="item" data-value="Melawan Arus">Melawan Arus</div>
+                                        <div class="item" data-value="Kendaraan Tidak Sesuai Standar">Kendaraan Tidak Sesuai Standar</div>
                                     </div>
                                 </div>
                             </div>
@@ -70,34 +70,22 @@
                                 <label class="label form">
                                     PLAT
                                 </label>
-                                <input type="email" name="number" id="plat" placeholder="Nomor plat pelanggar">
+                                <input type="text" name="number" id="plat" placeholder="Nomor plat pelanggar">
                                 <div class="ripple form" target="plat"></div>
                             </div>
                             <div class="field">
                                 <label class="label form">
                                     LOKASI PELANGGARAN
                                 </label>
-                                <input type="text" name="location" id="lokasi" data-toggle="datepicker" placeholder="HH/BB/TTTT">
+                                <input type="text" name="location" id="lokasi" data-toggle="datepicker" placeholder="Lokasi kejadian pelanggaran">
                                 <div class="ripple form" target="lokasi"></div>
                             </div>
-                        </form>
-                    </div>                    
-                </div>
-
-
-                <!-- UPLOAD -->
-                <div class="ui fluid card" id="formbukti">                    
-                    <div class="image">
-                        <img class="imgbuffer" src="">
-                    </div>
-                    <div class="content">
-                        <form action="" class="ui form box">
                             <div class="field">
                                 <label class="label form">
                                     GAMBAR BUKTI PELANGGARAN
                                 </label>
                                 <div class="ui action input">
-                                    <input type="file" name="evidence" id="gambar" style="display:none;">
+                                    <input type="file" name="image" id="gambar" style="display: none">
                                     <input type="text" placeholder="filename" disabled id="filename">
                                     <label class="ui teal right labeled icon button gambar" id="buttongambar" for="gambar">
                                         <i class="camera icon"></i>
@@ -105,9 +93,35 @@
                                     </label>
                                 </div>
                             </div>
+                            <button class="ui bottom atached button next" id="buttonbukti" type="submit">BUAT LAPORAN</button>
                         </form>
                     </div>
-                    <button class="ui bottom atached button next" id="buttonbukti">BUAT LAPORAN</button>                    
+                </div>
+
+
+                <!-- UPLOAD -->
+                <div class="ui fluid card" id="formbukti">
+                    <div class="ui image">
+                        <img class="imgbuffer" src="">
+                    </div>
+                </div>
+
+                <div class="ui mini modal type">
+                    <div class="header">Tipe berkas tidak didukung</div>
+                    <div class="content">
+                        <p>Bukti yang dapat anda unggah hanya berupa foto dengan format</p>
+                        <span class="ui blue label type">.JPG</span>
+                        <span class="ui blue label type">.JPEG</span>
+                        <span class="ui blue label type">.PNG</span>
+                        <span class="ui blue label type">.GIF</span>
+                    </div>
+                </div>
+
+                <div class="ui mini modal size">
+                    <div class="header">Berkas melebihi batas maksimal</div>
+                    <div class="content">
+                        <p>Bukti yang dapat anda unggah maksimal berukuran 4mb</p>                        
+                    </div>
                 </div>
             </div>
         </div>

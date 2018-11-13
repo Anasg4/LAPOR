@@ -1,0 +1,62 @@
+@import "form.css";
+@import "menubar.css";
+@import "text.css";
+
+
+:root {
+    --primary: #48bae7;
+    --primarydark: #41acd6;
+    --title:rgb(144, 144, 144);
+    --titlefade:#333333a8;
+    --background-primary:#fff;
+    --fade: #333333c2;
+}
+
+.background {
+    /* background: linear-gradient(128deg, #48bae7, #b940ac); */
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);    
+    color: black;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.ui.card{
+    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;
+    border-radius: 5px !important;    
+}
+
+.ui.button.create, .ui.button.back{
+    font-family: 'karla', sans-serif !important;
+    background: #48bae7 !important;
+    color: white !important;              
+    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;
+}
+
+.ui.button.create:hover, .ui.button.back:hover{
+    background: #3d9fc5 !important;
+}
+
+
+.panel-container{
+    padding-top: 7em !important;
+    margin-left: 9em !important;    
+}
+
+.laporan-panel{    
+    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;    
+    border-radius: 5px !important;
+    background: #fff;    
+    padding: 1.5em; 
+    /* height: 100%;           */
+}
+
+#detail-panel{
+    display: none;
+    opacity: 0;
+}
+
+
+

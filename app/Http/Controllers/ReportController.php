@@ -40,6 +40,7 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->image);
         $filename = explode('.', $request->image->getClientOriginalName());
         $fileExt = end($filename);
         $id = $this->generateId();

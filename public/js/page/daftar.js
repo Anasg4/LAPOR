@@ -61,7 +61,7 @@ $('.ui.form')
   inline : true,
   fields: {
     nama: {
-        identifier  : 'nama',
+        identifier  : 'name',
         rules: [
           {
             type   : 'empty',
@@ -70,7 +70,7 @@ $('.ui.form')
         ]
       },
     NIK: {
-      identifier  : 'NIK',
+      identifier  : 'nik',
       rules: [
         {
           type   : 'empty',

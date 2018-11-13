@@ -20,7 +20,7 @@
     background-attachment: fixed;
 }
 
-.content {
+.content-laporan {
     margin-top: 5em;
 }
 
@@ -29,8 +29,7 @@
 }
 
 .ui.fluid.card {
-    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;
-    padding: 1px !important;
+    box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;    
     border: 0 !important;   
 }
 
@@ -52,6 +51,10 @@
     background: #48bae7 !important;
     color: white !important;
     height: 3em !important;
+}
+
+.type{
+    background: #48bae7 !important;
 }
 
 .button:hover {
@@ -85,31 +88,12 @@
     display: none;
 }
 
-/* styling date input */
-/* Removes the clear button from date inputs */
-input[type="date"]::-webkit-clear-button {
-    display: none;
-}
-
-/* Removes the spin button */
-input[type="date"]::-webkit-inner-spin-button { 
-    display: none;
-}
-
-/* Always display the drop down caret */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    color: #2c3e50;
-}
-
-/* end of styling date input */
-/*  */
-
 @media only screen and (max-width: 768px) {
     .ui.menu {
         padding-left: 2em !important;
         padding-right: 2em !important;
     }
-    .content {
+    .content-laporan {
         margin-top: 2em !important;
     }
     

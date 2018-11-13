@@ -63,7 +63,7 @@
                                 <label class="label form">
                                     NIK
                                 </label>
-                                <input type="text" name="NIK" id="NIK">
+                                <input type="text" name="nik" id="NIK">
                                 <div class="ripple form" target="NIK"></div>
                             </div>
                             <div class="field">

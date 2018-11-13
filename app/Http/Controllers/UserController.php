@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index(){
-        $reports = Report::where('user_id', Auth::id())->get();
+        $reports = Report::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        $report_status = ['Belum diverifikasi', 'Terverifikasi', 'Selesai'];
+        $colors = ['red', 'blue', 'green'];
+
         $userData = [
             'name' => Auth::user()->name,
             'nik' => Auth::user()->nik,
@@ -18,7 +21,7 @@ class UserController extends Controller
         ];
 
         // return view('home')->with('userData', $userData)->with('reports', $reports);
-        return view('home')->with(compact('userData', 'reports'));
+        return view('home')->with(compact('userData', 'reports', 'report_status', 'colors'));
     }
 
     public function showRegistration(){
