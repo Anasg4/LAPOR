@@ -13,8 +13,18 @@ class CreateRewardsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('rewards')) {
+            Schema::dropIfExists('rewards');
+        }
         Schema::create('rewards', function (Blueprint $table) {
-            $table->increments('id');
+            $table->string('id', 6);
+            $table->primary('id');
+            $table->string('name');
+            $table->integer('point');
+            $table->string('redeem_code', 6)->unique();
+            $table->integer('user_id')->nullable($value = true);
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('reward_status');
             $table->timestamps();
         });
     }
