@@ -37,7 +37,11 @@ class AdminController extends Controller
 
             $user->save();
         }
+    }
 
+    public function destroy($id){
+        $report = Report::find($id);
 
+        $report->delete();
     }
 }

@@ -21,10 +21,10 @@
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
         <a class="item logo" href="index.html">
-            Lapor.        
-        </a>        
+            Lapor.
+        </a>
         <div class="right menu">
-            <a class="item" href="#">Bantuan</a>            
+            <a class="item" href="#">Bantuan</a>
             <a href="/login" class="item">
                 <div class="ui button menubar">Keluar</div>
             </a>
@@ -40,7 +40,7 @@
                 <!-- Detail -->
                 <div class="ui fluid card" id="formdetail">
                     <div class="content">
-                        <form action="/report" class="ui form box">
+                        <form action="/report" class="ui form box" method="post">
 
                             @csrf
                             <div class="field">
@@ -81,12 +81,12 @@
                                 <div class="ripple form" target="lokasi"></div>
                             </div>
                         </form>
-                    </div>                    
+                    </div>
                 </div>
 
 
                 <!-- UPLOAD -->
-                <div class="ui fluid card" id="formbukti">                    
+                <div class="ui fluid card" id="formbukti">
                     <div class="image">
                         <img class="imgbuffer" src="">
                     </div>
@@ -107,7 +107,7 @@
                             </div>
                         </form>
                     </div>
-                    <button class="ui bottom atached button next" id="buttonbukti">BUAT LAPORAN</button>                    
+                    <button class="ui bottom atached button next" id="buttonbukti">BUAT LAPORAN</button>
                 </div>
             </div>
         </div>

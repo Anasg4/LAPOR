@@ -19,4 +19,8 @@ class User extends Model implements Authenticatable
         return $this->hasMany('App\Report');
     }
 
+    public function rewards(){
+        return $this->hasMany('App\Reward');
+    }
+
 }

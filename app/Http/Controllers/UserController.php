@@ -55,6 +55,7 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
+
         if(Auth::attempt(['nik' => $request['nik'], 'password' => $request['password']])){
             // if(Auth::user()->is_admin){
             //     return redirect('/admin');

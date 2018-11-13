@@ -4,9 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Reward;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RewardController extends Controller
 {
+    public function index(){
+        // SELECT Jurusan, COUNT(*) AS `num` FROM mahasiswa GROUP BY Jurusan
+        $user = User::find(Auth::id());
+
+        $userReward = $user->reports()->get();
+
+        $rewardList = Reward::select('name', 'point')->where('user_id', null)->distinct()->get();
+
+        $rewards= [];
+        foreach($rewardList as $reward){
+            $rewardItem = Reward::select('id', 'name', 'point')->where('user_id', null)->where('name', $reward['name'])->first();
+            $rewards[] = $rewardItem;
+        }
+        // dd($userReward, $rewardList, $rewards);
+
+        return view('reward.all')->with('rewards', $rewards);
+    }
+
     public function add(){
         return view('admin.reward.add');
     }
@@ -22,6 +43,27 @@ class RewardController extends Controller
             $reward->save();
         }
         return redirect('/admin');
+    }
+
+    public function show($name){
+        $reward = Reward::select()->where('name', $name)->first();
+        return view('detail')->with('reward', $reward);
+    }
+
+    public function update($id){
+        $user = User::find(Auth::id());
+        $reward = Reward::find($id);
+        if($user->points >= $reward->point){
+            $user->points -= $reward->point;
+            $user->save();
+
+            $user->rewards()->save($reward);
+
+            return redirect('/reward');
+        }
+        else{
+            return redirect()->back()->with('errors', 'Poin tidak cukup');
+        }
     }
 
     private function generateId(){

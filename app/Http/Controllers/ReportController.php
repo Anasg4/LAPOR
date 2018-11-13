@@ -32,6 +32,13 @@ class ReportController extends Controller
         return view('report.create')->with('userData', $userData);
     }
 
+    public function createPlain()
+    {
+        $userData = Auth::user();
+
+        return view('report.create-plain')->with('userData', $userData);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

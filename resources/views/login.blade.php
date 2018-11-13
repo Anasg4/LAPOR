@@ -48,13 +48,13 @@
         <div class="ui five wide centered column" id="section-right">
             <div class="column">
                 <div class="ui fluid card">
-                    <div class="content">                        
+                    <div class="content">
 
                         @if($errors)
                             @foreach ($errors as $error)
                                 {{ $item }}
                             @endforeach
-                        @endif                        
+                        @endif
 
                         <form action="/login" class="ui form" id="formlogin" method="post">
 
@@ -63,8 +63,8 @@
                                 <label class="label form">
                                     NIK
                                 </label>
-                                <input type="text" name="NIK" id="NIK">
-                                <div class="ripple form" target="NIK"></div>
+                                <input type="text" name="nik" id="nik">
+                                <div class="ripple form" target="nik"></div>
                             </div>
                             <div class="field">
                                 <label class="label form">
@@ -72,7 +72,7 @@
                                 </label>
                                 <input type="password" name="password" id="password">
                                 <div class="ripple form" target="password"></div>
-                            </div>                            
+                            </div>
 
                             <button class="ui fluid small button form" type="submit">MASUK</button>
                             <p class="label form emphasis">Belum punya akun, daftar <a href="daftar.html">di sini</a></p>
