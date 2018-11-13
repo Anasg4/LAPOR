@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="css/page/guest.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/semantic.css" />
     <script src="js/jquery.min.js"></script>
@@ -20,11 +20,13 @@
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
         <div class="item logo" href="#">
-            LAPOR
+            Lapor.
         </div>
         <div class="right menu">
-            <a class="item" href="#">TENTANG</a>
-            <a class="item" href="/login">MASUK</a>
+            <a class="item" href="#">Tentang</a>
+            <a class="item" href="/login">
+                <div class="ui button menubar">Masuk</div>
+            </a>
         </div>
     </div>
 
@@ -44,11 +46,10 @@
         </div>
         <div class="seven wide column" id="main-container">
             <div class="section basic">
-                <div class="content">
-                    <p class="title center form" id="taglogin">Silakan isi form <br> menggunakan data anda</p>
+                <div class="content">                
 
                     @if($errors->has('nik'))
-                        {{ $errors->first('nik') }}
+                    <script>alert('test')</script>                        
                     @endif
                     @if($errors->has('email'))
                         {{ $errors->first('email') }}

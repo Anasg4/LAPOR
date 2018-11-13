@@ -31,7 +31,7 @@ $('input').blur(function() {
 var animateCard = anime({
   targets: '.section.basic',
   delay: 200,
-  scale: ['0','1'],
+  opacity: [0,1],
   easing: [0.815, 0.060, 0.000, 0.845],
   elasticity: 800,
   duration: 500
@@ -79,6 +79,10 @@ $('.ui.form')
         {
           type   : 'integer',
           prompt : 'NIK tidak boleh berisikan huruf'
+        },
+        {
+          type   : 'exactLength[16]',
+          prompt : 'NIK harus {ruleValue} characters'
         }
       ]
     },

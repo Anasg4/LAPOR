@@ -7,7 +7,7 @@ $('.ui.selection.dropdown').dropdown();
 var animateCard = anime({
     targets: '.ui.card',
     delay: 200,      
-    scale: ['0','1'],
+    opacity: [0,1],
     easing: [0.815, 0.060, 0.000, 0.845],   
     elasticity: 800, 
     duration: 500    
@@ -58,7 +58,8 @@ function thumbnail(input) {
                 $('.imgbuffer').attr('src', '');
             } else {
                 reader.onload = function (e) {
-                    $('.imgbuffer').attr('src', e.target.result);
+                    $('.imgbuffer').attr('src', e.target.result);  
+                    $('#filename').val(input.value.split(/(\\|\/)/g).pop());s
                 }
                 reader.readAsDataURL(input.files[0]);
             }
@@ -72,48 +73,3 @@ $("#gambar").change(function () {
     thumbnail(this);
 });
 
-
-$('.next').click(function () {
-
-    var targetShow = '';
-    var targetHide = '';
-    
-    if(this.id == 'buttondetail'){
-        console.log(this.id);
-        targetShow = '#formbukti';
-        targetHide = '#formdetail';
-    }else{
-        targetShow = '#formdetail';
-        targetHide = '#formbukti';
-    }
-
-    const hideform = anime({
-        targets: targetHide,        
-        opacity: [
-            {value:[1,0], duration: 500}
-        ],
-        easing: [0.815, 0.060, 0.000, 0.845],
-        duration: 1000,
-        autoplay: false,
-        complete: function() {
-            $(targetHide).css('display', 'none');
-        }
-    });
-    hideform.play();    
-
-    $(targetShow).css('display', 'inherit');
-    const showform = anime({
-        targets: targetShow,        
-        translateY: [
-            // { value: 200, duration: 500, elasticity: 100 },
-            { value: [200,0], duration: 500, delay: 0, elasticity: 100 }
-        ],
-        opacity: [
-            {value:[0,1], duration: 1200, delay: 200}
-        ],
-        easing: [0.815, 0.060, 0.000, 0.845],
-        duration: 1000,
-        autoplay: false
-    });
-    showform.play();    
-})

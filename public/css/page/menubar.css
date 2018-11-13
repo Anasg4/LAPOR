@@ -9,14 +9,30 @@
 }
 .logo{    
     font-family: 'rubik', sans-serif !important;
-    font-size: 20px;        
-    font-weight: 700 !important;    
+    font-size: 24px;            
+    font-weight: 500 !important;    
     color: var(--primary) !important;        
 }
 .ui.top.fixed.menu{
     margin-top: 0%;        
 }
 
-.right.menu>a {
+.right.menu>a, .item.left {
     color: rgb(144, 144, 144) !important;         
+}
+
+.ui.button.menubar{
+    background: none !important;
+    color: var(--primary);
+    width: 120px !important;
+    border-radius: 20px;
+    border: 2px solid var(--primary);
+}
+
+.ui.button.menubar:hover{
+    color: white !important;
+    background: var(--primary) !important;
+}
+.item:hover{
+    background: white !important;
 }

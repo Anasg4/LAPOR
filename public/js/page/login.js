@@ -1,7 +1,6 @@
 
 $('#NIK').blur(NikError);
 $('#password').blur(PassError);
-// $('#btnMasuk').click(auth);
 $('#left-container').css('transform: scaleX(2) !important');
 
 $('input').focus(function() {
@@ -48,7 +47,7 @@ function NikError(){
 var animateCard = anime({
   targets: '.ui.card',
   delay: 200,
-  scale: ['0','1'],
+  opacity: [0,1],
   easing: [0.815, 0.060, 0.000, 0.845],
   elasticity: 800,
   duration: 500
@@ -61,12 +60,6 @@ var animateText = anime({
   opacity: [0, 1],
   duration: 500
 })
-
-
-// function auth(){
-//   console.log("asdsa");
-//   window.location.href = './index.html';
-// }
 
 
 $('.ui.checkbox')
@@ -93,6 +86,10 @@ $('.ui.form')
           {
             type   : 'integer',
             prompt : 'NIK tidak boleh berisikan huruf'
+          },
+          {
+            type   : 'exactLength[16]',
+            prompt : 'NIK harus {ruleValue} characters'
           }
         ]
       },

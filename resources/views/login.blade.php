@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="css/page/guest.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/semantic.css" />
     <script src="js/jquery.min.js"></script>
@@ -19,12 +19,14 @@
 
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
-        <div class="item logo" href="#">
-            LAPOR
+        <div class="item logo" href="./index.html">
+            Lapor.
         </div>
         <div class="right menu">
-            <a class="item" href="#">TENTANG</a>
-            <a class="item" href="#">DAFTAR</a>
+            <a class="item" href="#">Tentang</a>
+            <a class="item" href="/register">
+                <div class="ui button menubar">Daftar</div>
+            </a>
         </div>
     </div>
 
@@ -46,16 +48,17 @@
         <div class="ui five wide centered column" id="section-right">
             <div class="column">
                 <div class="ui fluid card">
-                    <div class="content">
-                        <p class="title form center" id="taglogin">Silakan masuk menggunakan <br> akun yang telah ada</p>
+                    <div class="content">                        
 
                         @if($errors)
                             @foreach ($errors as $error)
                                 {{ $item }}
                             @endforeach
-                        @endif
+                        @endif                        
 
-                        <form action="/login" class="ui form" id="formlogin" action="post">
+                        <form action="/login" class="ui form" id="formlogin" method="post">
+
+                            @csrf
                             <div class="field">
                                 <label class="label form">
                                     NIK
@@ -69,16 +72,10 @@
                                 </label>
                                 <input type="password" name="password" id="password">
                                 <div class="ripple form" target="password"></div>
-                            </div>
-                            <div class="field">
-                                <div class="ui slider checkbox">
-                                    <input type="checkbox" tabindex="0" class="hidden" name="remember">
-                                    <label class="label form">ingat saya</label>
-                                </div>
-                            </div>
+                            </div>                            
 
-                            <button class="ui fluid button form" type="submit">MASUK</button>
-                            <p class="label form">Belum punya akun, daftar <a href="daftar.html">di sini</a></p>
+                            <button class="ui fluid small button form" type="submit">MASUK</button>
+                            <p class="label form emphasis">Belum punya akun, daftar <a href="daftar.html">di sini</a></p>
                         </form>
                     </div>
                 </div>
