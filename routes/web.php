@@ -25,3 +25,5 @@ Route::get('/logout', 'UserController@logout');
 Route::resource('report', 'ReportController')->middleware('auth');
 
 Route::get('/admin', 'AdminController@index')->middleware('admin');
+Route::get('/admin/report/{id}', 'AdminController@show')->middleware('admin');
+Route::put('/admin/report/{id}', 'AdminController@update')->middleware('admin');

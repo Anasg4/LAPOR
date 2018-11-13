@@ -8,6 +8,6 @@
 </head>
 <body>
     {{ $report }}
-    <img src="{{ Storage::url($report['picture']) }}" alt="evidence">
+    <img src="{{ Storage::url($report['image']) }}" alt="evidence">
 </body>
 </html>

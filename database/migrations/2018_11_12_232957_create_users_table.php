@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->unique('nik');
             $table->string('name');
             $table->string('email');
-            $table->integer('points');
+            $table->integer('points')->default(0);
             $table->string('password');
             $table->integer('is_admin')->default(0);
             $table->rememberToken();

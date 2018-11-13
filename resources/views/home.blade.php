@@ -8,8 +8,9 @@
 </head>
 <body>
     <div>
-        {{ Auth::check() }}
-        {{ Auth::user() }}
+        @foreach ($userData as $data)
+            {{ $data }}
+        @endforeach
     </div>
     <div>
         @foreach ($reports as $report)

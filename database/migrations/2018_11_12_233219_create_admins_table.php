@@ -13,6 +13,9 @@ class CreateAdminsTable extends Migration
      */
     public function up()
     {
+        if (Schema::hasTable('admins')) {
+            Schema::dropIfExists('admins');
+        }
         Schema::create('admins', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
