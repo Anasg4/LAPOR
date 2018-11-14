@@ -39,7 +39,9 @@
     background: #3d9fc5 !important;
 }
 
-
+.field{
+    position: inherit !important;
+}
 .panel-container{
     padding-top: 7em !important;
     margin-left: 9em !important;   

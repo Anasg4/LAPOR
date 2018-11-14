@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function index(){
-        $reports = Report::all();
+        $reports = Report::all();        
         $report_status = ['Belum diverifikasi', 'Terverifikasi', 'Selesai'];
-        $colors = ['red', 'blue', 'green'];
+        $colors = ['red', 'yellow', 'green'];
         $userData = [
             'name' => Auth::user()->name,
             'nik' => Auth::user()->nik,                        
@@ -44,11 +44,16 @@ class AdminController extends Controller
 
             $user->save();
         }
+
+        return redirect('/admin/cockpit');
     }
 
     public function destroy($id){
+        
         $report = Report::find($id);
 
         $report->delete();
+
+        return redirect('/admin/cockpit');
     }
 }

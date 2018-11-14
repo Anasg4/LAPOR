@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function index(){
+
+        if(Auth::user()->is_admin){
+            return redirect('/admin/cockpit');
+        }        
+
         $reports = Report::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
         $report_status = ['Belum diverifikasi', 'Terverifikasi', 'Selesai'];
         $colors = ['red', 'blue', 'green'];

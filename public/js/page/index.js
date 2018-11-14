@@ -1,5 +1,7 @@
 var ListLaporanClicked = false;
 
+$('.ui.dropdown').dropdown()
+
 // animating List
 $('.laporan').click(function () {
 
@@ -54,7 +56,7 @@ $('.laporan').click(function () {
 
 })
 
-$('.link.card.detail').click(function () {
+$('#back-panel').click(function () {
     var timeline = anime.timeline({ autoplay: false })
     timeline.add({
         targets: '#detail-panel',
@@ -106,11 +108,11 @@ function showDetail(data_laporan) {
 
     console.log(data_laporan);
     if(data_laporan.report_status == 0){
-        $('#status-laporan').removeClass('yellow red green').addClass('red')
+        $('#status-laporan').removeClass().addClass('ui mini red label')
     }else if(data_laporan.report_status == 1){
-        $('#status-laporan').removeClass('yellow red green').addClass('yellow')
+        $('#status-laporan').removeClass().addClass('ui mini yellow label')
     }else{
-        $('#status-laporan').removeClass('yellow red green').addClass('green')
+        $('#status-laporan').removeClass().addClass('ui mini green label')
     }
 
     $('#status-laporan').html(data_laporan.status)
@@ -119,7 +121,9 @@ function showDetail(data_laporan) {
     $('#description-laporan').html(data_laporan.description)
     $('#username-laporan').html(data_laporan.username)
     $('#location-laporan').html(data_laporan.location)
-    $('#evidence-laporan').attr('src', data_laporan.path)
+    $('#evidence-laporan').attr('src', data_laporan.path)    
+    $('#form-update, #form-delete').attr('action', '/admin/report/'+data_laporan.id)        
+    $('#status-verifikasi').html(data_laporan.status)
 }
 
 function getData(id_laporan) {
@@ -132,3 +136,12 @@ function getData(id_laporan) {
         }
     });
 }
+
+$('#update-laporan').click(function() {
+    $('#form-update').submit()
+})
+
+$('#delete-laporan').click(function() {
+    console.log('true');  
+    $('#form-delete').submit() 
+})

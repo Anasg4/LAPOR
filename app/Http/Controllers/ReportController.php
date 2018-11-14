@@ -51,12 +51,9 @@ class ReportController extends Controller
         $filename = explode('.', $request->image->getClientOriginalName());
         $fileExt = end($filename);
         $id = $this->generateId();
-
-        // $path = $request->file('avatar')->storeAs(
-        //     'avatars', $request->user()->id
-        // );
+        
         $path = Storage::putFileAs(
-            '/storage/evidences', $request->file('image'), $request->user()->id.'-'.$id.'.'.$fileExt
+            '/public/evidences', $request->file('image'), $request->user()->id.'-'.$id.'.'.$fileExt
         );
 
         $report = new Report;

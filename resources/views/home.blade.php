@@ -94,12 +94,11 @@
                             <div class="description">
                                 <p>{{ $report['description'] }}</p>
                             </div>
-                            <div class="extra">
-                                <div class="ui mini label">{{ $report['number'] }}</div>
-                                
+                            <div class="extra">                                
                                 <div class="ui mini {{ $colors[$report['report_status']] }} label">
                                     {{ $report_status[$report['report_status']] }}
                                 </div>
+                                <div class="ui mini label">{{ $report['number'] }}</div>
                             </div>
                         </div>
                     </div>
@@ -120,7 +119,7 @@
         <div class="five wide column detail-panel" id="detail-panel">
 
             <div class="ui fluid link card detail">
-                <div class="content">
+                <div class="content" id="back-panel">
                     <div class="right floated">
                         <div class="ui mini label" id="status-laporan"></div>
                     </div>
