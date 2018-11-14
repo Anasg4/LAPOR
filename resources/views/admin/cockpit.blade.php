@@ -23,7 +23,7 @@
             Lapor.
         </a>
         <div class="right menu">
-            <a class="item" href="#">Reward</a>
+            <a class="item" href="/admin/reward/add">Reward</a>
             <a href="/logout" class="item">
                 <div class="ui button menubar">Keluar</div>
             </a>

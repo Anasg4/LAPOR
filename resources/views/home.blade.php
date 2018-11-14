@@ -23,7 +23,7 @@
             Lapor.
         </a>
         <div class="right menu">
-            <a class="item" href="#">Bantuan</a>            
+            <a class="item" href="/reward">Reward</a>            
             <a href="/logout" class="item">
                 <div class="ui button menubar">Keluar</div>
             </a>
