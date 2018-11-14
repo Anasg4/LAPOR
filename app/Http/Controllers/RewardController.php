@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Reward;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 
 class RewardController extends Controller
@@ -33,6 +34,16 @@ class RewardController extends Controller
     }
 
     public function store(Request $request){
+        $filename = explode('.', $request->image->getClientOriginalName());
+        $fileExt = end($filename);
+
+        // $path = $request->file('avatar')->storeAs(
+        //     'avatars', $request->user()->id
+        // );
+        $path = Storage::putFileAs(
+            'public/voucher', $request->file('image'), $request['name'].'.'.$fileExt
+        );
+
         for($i=0;$i<$request['amount'];$i++){
             $reward = new Reward;
             $reward->id = $this->generateId();
@@ -42,7 +53,7 @@ class RewardController extends Controller
 
             $reward->save();
         }
-        return redirect('/admin');
+        return redirect('/admin/cockpit');
     }
 
     public function show($name){

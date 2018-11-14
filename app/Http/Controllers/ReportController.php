@@ -82,13 +82,13 @@ class ReportController extends Controller
 
         $report = Report::find($id);
         $user = User::find($report->user_id);
-        
+
         $report->created = strftime("%d %b %Y",strtotime($report->created_at));
-        $report->username = $user->name;        
+        $report->username = $user->name;
         $report->status = $report_status[$report->report_status];
 
-        $path = str_replace('public','/storage', $report->image);     
-        $report->path = $path;        
+        $path = str_replace('public','/storage', $report->image);
+        $report->path = $path;
 
         return json_encode($report);
     }

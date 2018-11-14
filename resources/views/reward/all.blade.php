@@ -15,6 +15,7 @@
             <div>
                 {{ $reward['name'] }}<br>
                 {{ $reward['point'] }}
+            <img src="storage/voucher/{{ $reward['name'] }}.jpg" alt="voucher image">
                 <form action="/reward/{{ $reward['id']}}" method="post">
                     @csrf
                     <button type="submit">TUKARKAN POIN</button>
