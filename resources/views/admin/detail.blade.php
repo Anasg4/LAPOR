@@ -19,5 +19,9 @@
         </select>
         <button type="submit">SIMPAN</button>
     </form>
+    <form action="/admin/report/{{ $report['id'] }}" method="post">
+        @csrf
+        <button type="submit">HAPUS</button>
+    </form>
 </body>
 </html>

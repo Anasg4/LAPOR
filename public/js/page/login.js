@@ -45,21 +45,21 @@ function NikError(){
 };
 
 var animateCard = anime({
-  targets: '.ui.card',
-  delay: 200,
+  targets: '#section-container',  
   opacity: [0,1],
+  scale: [0,1],
   easing: [0.815, 0.060, 0.000, 0.845],
   elasticity: 800,
   duration: 500
 });
 
-var animateText = anime({
-  targets: '#section-left',
-  translateX: [600,0],
-  easing: [0.830, 0.060, 0.170, 1.355],
-  opacity: [0, 1],
-  duration: 500
-})
+// var animateText = anime({
+//   targets: '#section-left',
+//   translateX: [600,0],
+//   easing: [0.830, 0.060, 0.170, 1.355],
+//   opacity: [0, 1],
+//   duration: 500
+// })
 
 
 $('.ui.checkbox')

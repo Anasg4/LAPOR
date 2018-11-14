@@ -20,7 +20,7 @@
 <body class="background">
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
-        <a class="item logo" href="index.html">
+        <a class="item logo" href="/">
             Lapor.
         </a>
         <div class="right menu">
@@ -93,9 +93,9 @@
                                     </label>
                                 </div>
                             </div>
-                            <button class="ui bottom atached button next" id="buttonbukti" type="submit">BUAT LAPORAN</button>
                         </form>
                     </div>
+                    <button class="ui bottom atached button next" id="buttonbukti" type="submit">BUAT LAPORAN</button>
                 </div>
 
 

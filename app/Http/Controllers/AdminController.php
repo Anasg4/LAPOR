@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Report;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function index(){
         $reports = Report::all();
-        return view('admin.dashboard')->with('reports', $reports);
+        $report_status = ['Belum diverifikasi', 'Terverifikasi', 'Selesai'];
+        $colors = ['red', 'blue', 'green'];
+        $userData = [
+            'name' => Auth::user()->name,
+            'nik' => Auth::user()->nik,                        
+        ];
+        return view('admin.cockpit')->with(compact('reports','userData','report_status','colors'));
     }
 
     public function showLoginForm(){
@@ -37,7 +44,11 @@ class AdminController extends Controller
 
             $user->save();
         }
+    }
 
+    public function destroy($id){
+        $report = Report::find($id);
 
+        $report->delete();
     }
 }

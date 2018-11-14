@@ -29,26 +29,13 @@ $('input').blur(function() {
 
 
 var animateCard = anime({
-  targets: '.section.basic',
-  delay: 200,
+  targets: '#section-container',
   opacity: [0,1],
+  scale: [0,1],
   easing: [0.815, 0.060, 0.000, 0.845],
   elasticity: 800,
   duration: 500
 });
-
-var animateText = anime({
-  targets: '#section-left',
-  translateX: [600,0],
-  opacity: [0, 1],
-  easing: [0.830, 0.060, 0.170, 1.355],
-  elasticity: 800,
-  duration: 1000
-})
-
-// $('.ui.button').click(function(event){
-//     event.preventDefault();
-// })
 
 $('.newspaper.icon')
 .transition('set looping')

@@ -32,6 +32,13 @@ class ReportController extends Controller
         return view('report.create')->with('userData', $userData);
     }
 
+    public function createPlain()
+    {
+        $userData = Auth::user();
+
+        return view('report.create-plain')->with('userData', $userData);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -49,7 +56,7 @@ class ReportController extends Controller
         //     'avatars', $request->user()->id
         // );
         $path = Storage::putFileAs(
-            'public/evidences', $request->file('image'), $request->user()->id.'-'.$id.'.'.$fileExt
+            '/storage/evidences', $request->file('image'), $request->user()->id.'-'.$id.'.'.$fileExt
         );
 
         $report = new Report;
@@ -74,9 +81,19 @@ class ReportController extends Controller
      */
     public function show($id)
     {
+        $report_status = ['Belum diverifikasi', 'Terverifikasi', 'Selesai'];
+
         $report = Report::find($id);
-        // if(Auth::id)
-        return view('report.detail')->with('report', $report);
+        $user = User::find($report->user_id);
+        
+        $report->created = strftime("%d %b %Y",strtotime($report->created_at));
+        $report->username = $user->name;        
+        $report->status = $report_status[$report->report_status];
+
+        $path = str_replace('public','/storage', $report->image);     
+        $report->path = $path;        
+
+        return json_encode($report);
     }
 
     /**

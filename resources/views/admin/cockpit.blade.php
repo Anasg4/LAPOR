@@ -9,10 +9,10 @@
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/page/index.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="css/semantic.css" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/anime.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url('css/page/index.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url('css/semantic.css') }}" />
+    <script src="{{ url('js/jquery.min.js') }}"></script>
+    <script src="{{ url('js/anime.min.js') }}"></script>
 </head>
 
 <body class="background">
@@ -49,18 +49,11 @@
                 </div>
                 <div class="extra content">
                     <span class="left floated star">
-                        <i class="yellow dollar sign icon"></i>
-                        {{ $userData['points']}} Pts.
-                    </span>
-                    <span class="right floated star">
-                        <i class="tag icon"></i>
-                        {{ count($reports) }} Laporan
-                    </span>
+                        <i class="yellow user icon"></i>
+                        Admin
+                    </span>                    
                 </div>
-            </div>
-            @if(count($reports) > 0)
-            <a href="/report/create" class="ui fluid button create">BUAT LAPORAN</a>
-            @endif
+            </div>            
         </div>
 
 
@@ -143,13 +136,11 @@
                         <span id="location-laporan"></span> 
                     </div>
                 </div>
-                
-                @if( $userData['is_admin'] != 0 )
+                                
                 <div class="ui two buttons bottom attached">
                     <div class="ui button back">HAPUS</div>                
                     <div class="ui button back">VERIFIKASI</div>                
-                </div>
-                @endif
+                </div>                
             </div>
 
             <div class="ui fluid card">
@@ -165,7 +156,7 @@
 
 
 </body>
-<script src="js/semantic.min.js"></script>
-<script src="js/page/index.js"></script>
+<script src="{{ url('js/semantic.min.js') }}"></script>
+<script src="{{ url('js/page/index.js') }}"></script>
 
 </html>

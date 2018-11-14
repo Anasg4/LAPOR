@@ -7,7 +7,7 @@
     <title>Admin - Add Reward</title>
 </head>
 <body>
-    <form action="/admin/reward/store" method="post">
+    <form action="/admin/reward/store" method="post" enctype="multipart/form-data">
         @csrf
 
         <div>
@@ -21,6 +21,10 @@
         <div>
             <label for="amount">Jumlah</label>
             <input type="number" name="amount" id="amount">
+        </div>
+        <div>
+            <label for="image">Gambar</label>
+            <input type="file" name="image" id="image">
         </div>
         <div>
             <button type="submit">TAMBAH</button>

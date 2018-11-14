@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="ui two column centered stackable grid">
+    <div class="ui two column centered stackable grid" id="section-container">
         <div class="ui nine wide centered column section left" id="section-left">
             <div class="column">
                 <i class="inverted newspaper huge icon"></i>

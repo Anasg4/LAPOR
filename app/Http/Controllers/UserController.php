@@ -18,9 +18,9 @@ class UserController extends Controller
             'name' => Auth::user()->name,
             'nik' => Auth::user()->nik,
             'points' => Auth::user()->points,
+            'is_admin' => Auth::user()->is_admin,
         ];
-
-        // return view('home')->with('userData', $userData)->with('reports', $reports);
+        
         return view('home')->with(compact('userData', 'reports', 'report_status', 'colors'));
     }
 
@@ -58,14 +58,14 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
+
         if(Auth::attempt(['nik' => $request['nik'], 'password' => $request['password']])){
-            // if(Auth::user()->is_admin){
-            //     return redirect('/admin');
-            // }
-            // else{
-            //     return redirect('/');
-            // }
-            return redirect('/');
+            if(Auth::user()->is_admin){
+                return redirect('/admin/cockpit');
+            }
+            else{
+                return redirect('/');
+            }            
         }
         else{
             return redirect()->back();
