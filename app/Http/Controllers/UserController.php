@@ -20,7 +20,7 @@ class UserController extends Controller
             'points' => Auth::user()->points,
             'is_admin' => Auth::user()->is_admin,
         ];
-        
+
         return view('home')->with(compact('userData', 'reports', 'report_status', 'colors'));
     }
 
@@ -65,7 +65,7 @@ class UserController extends Controller
             }
             else{
                 return redirect('/');
-            }            
+            }
         }
         else{
             return redirect()->back();

@@ -10,12 +10,12 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function index(){
-        $reports = Report::all();
+        $reports = Report::select()->orderBy('created_at', 'desc')->get();
         $report_status = ['Belum diverifikasi', 'Terverifikasi', 'Selesai'];
         $colors = ['red', 'blue', 'green'];
         $userData = [
             'name' => Auth::user()->name,
-            'nik' => Auth::user()->nik,                        
+            'nik' => Auth::user()->nik,
         ];
         return view('admin.cockpit')->with(compact('reports','userData','report_status','colors'));
     }
@@ -26,6 +26,10 @@ class AdminController extends Controller
 
     public function show($id){
         $report = Report::find($id);
+
+        // if(count($report) > 0){
+        //     return redirect('admin.cockpit');
+        // }
 
         return view('admin.detail')->with('report', $report);
     }
@@ -44,11 +48,15 @@ class AdminController extends Controller
 
             $user->save();
         }
+
+        return redirect('/admin/cockpit');
     }
 
     public function destroy($id){
         $report = Report::find($id);
 
         $report->delete();
+
+        return redirect('/admin/cockpit');
     }
 }

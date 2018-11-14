@@ -9,6 +9,7 @@
 <body>
     {{ $report }}
     <br>
+    <img src="{{ $report['image'] }}" alt="evidence">
     <form action="/admin/report/{{ $report['id'] }}" method="post">
         {{ method_field('PUT') }}
         @csrf
@@ -20,6 +21,7 @@
         <button type="submit">SIMPAN</button>
     </form>
     <form action="/admin/report/{{ $report['id'] }}" method="post">
+        {{ method_field('DELETE') }}
         @csrf
         <button type="submit">HAPUS</button>
     </form>
