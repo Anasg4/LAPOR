@@ -14,19 +14,36 @@ class RewardController extends Controller
     public function index(){
         // SELECT Jurusan, COUNT(*) AS `num` FROM mahasiswa GROUP BY Jurusan
         $user = User::find(Auth::id());
-
-        $userReward = $user->reports()->get();
+        $user->laporan = count($user->reports()->get());   
+        
+        $userReward = $user->rewards()->get();
 
         $rewardList = Reward::select('name', 'point')->where('user_id', null)->distinct()->get();
 
         $rewards= [];
         foreach($rewardList as $reward){
-            $rewardItem = Reward::select('id', 'name', 'point')->where('user_id', null)->where('name', $reward['name'])->first();
+            $rewardItem = Reward::select('id', 'name', 'point', 'image')->where('user_id', null)->where('name', $reward['name'])->first();
             $rewards[] = $rewardItem;
-        }
-        // dd($userReward, $rewardList, $rewards);
+        }        
 
-        return view('reward.all')->with('rewards', $rewards);
+        return view('reward.all')->with(compact('rewards', 'user', 'userReward'));
+    }
+
+    public function getReward(){
+        $user = User::find(Auth::id());
+
+        $userReward = $user->rewards()->get();
+             
+
+        // $rewardList = Reward::select('name', 'point')->where('user_id', null)->distinct()->get();
+
+        // $rewards= [];
+        // foreach($rewardList as $reward){
+        //     $rewardItem = Reward::select('id', 'name', 'point', 'image')->where('user_id', null)->where('name', $reward['name'])->first();
+        //     $rewards[] = $rewardItem;
+        // }
+
+        return json_encode($user);
     }
 
     public function add(){
@@ -36,9 +53,10 @@ class RewardController extends Controller
     public function store(Request $request){
         $filename = explode('.', $request->image->getClientOriginalName());
         $fileExt = end($filename);
+        $id = $this->generateId();
         
         $path = Storage::putFileAs(
-            'public/voucher', $request->file('image'), $request['name'].'.'.$fileExt
+            'public/voucher', $request->file('image'), $id.'.'.$fileExt
         );
 
         for($i=0;$i<$request['amount'];$i++){
@@ -47,6 +65,7 @@ class RewardController extends Controller
             $reward->name = $request['name'];
             $reward->point = $request['point'];
             $reward->redeem_code = $this->generateRedeemCode();
+            $reward->image = $id.'.'.$fileExt;
 
             $reward->save();
         }

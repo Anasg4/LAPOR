@@ -20,10 +20,12 @@
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
         <a class="item logo" href="/">
-            Lapor.
+            Lapor. <span>/admin</span>
         </a>
         <div class="right menu">
-            <a class="item" href="/admin/reward/add">Reward</a>
+            <a class="item" href="/admin/reward/add">Users</a>
+            <a class="item" href="/admin/reward/add">Create rewards</a>
+            <a class="item" href="/">Home</a>
             <a href="/logout" class="item">
                 <div class="ui button menubar">Keluar</div>
             </a>
@@ -48,8 +50,8 @@
                     </div>
                 </div>
                 <div class="extra content">
-                    <span class="left floated star">
-                        <i class="yellow user icon"></i>
+                    <span class="left floated">
+                        <i class="yellow lock icon"></i>
                         Admin
                     </span>
                 </div>
@@ -78,15 +80,19 @@
                     </div>
                     @else @foreach ($reports as $report)
                     <div class="item laporan" data-laporan-id="{{ $report['id'] }}">
-                        <div class="content">
-                            <div class="header">{{ $report['violation'] }}</div>
+                        <div class="content">                            
+                            <div class="header">{{ $report['violation'] }}</div>                            
                             <div class="meta">
-                                <span>{{ strftime("%d %b %Y",strtotime($report->created_at)) }}</span>
+                                <span>{{ strftime("%d %b %Y",strtotime($report->created_at))  }}</span>                                                                                            
                             </div>
                             <div class="description">
                                 <p>{{ $report['description'] }}</p>
                             </div>
                             <div class="extra">
+                                <span class="right floated">
+                                    <i class="user icon"></i>
+                                    {{ $report['name'] }}
+                                </span>
                                 <div class="ui mini {{ $colors[$report['report_status']] }} label">
                                     {{ $report_status[$report['report_status']] }}
                                 </div>
@@ -141,27 +147,15 @@
                 <button class="ui button back" id="delete-laporan">HAPUS</button>
 
             </div>
-
+            
             <div class="ui fluid card">
-                <div class="content">
-                    <form action="/admin/report" class="ui form" method="POST" id="form-update">
-                        {{ method_field('PUT') }}
-                        @csrf
-                        <div class="field">
-                            <div class="ui selection dropdown">
-                                <input type="hidden" name="report_status">                                
-                                <div class="default text" id="status-verifikasi">Status laporan</div>
-                                <div class="menu">
-                                    <div class="item" data-value="0">Belum diverifikasi</div>
-                                    <div class="item" data-value="1">Terverifikasi</div>
-                                    <div class="item" data-value="2">Selesai</div>                                    
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <button class="ui button back" id="update-laporan">UBAH STATUS</button>                
-            </div>
+                <form action="/admin/report" method="POST" id="form-update">
+                    {{ method_field('PUT') }}
+                    @csrf
+                    <input type="hidden" name="report_status" value="0">                                                        
+                    <button class="ui fluid button back" id="update-laporan">BATAL VERIFIKASI</button>   
+                </form>                                    
+            </div>            
 
             <div class="ui fluid card">
                 <div class="ui image">

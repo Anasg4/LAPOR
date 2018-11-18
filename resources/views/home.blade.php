@@ -19,11 +19,12 @@
 
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
-        <a class="item logo" href="/home">
+        <a class="item logo" href="/">
             Lapor.
         </a>
         <div class="right menu">
             <a class="item" href="/reward">Reward</a>            
+            <a class="item" href="/">Home</a>            
             <a href="/logout" class="item">
                 <div class="ui button menubar">Keluar</div>
             </a>

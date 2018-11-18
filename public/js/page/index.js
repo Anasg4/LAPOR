@@ -7,7 +7,7 @@ $('.laporan').click(function () {
 
     // showDetail(this.data('id'))
     let id_laporan = $(this).data('laporan-id')
-    getData(id_laporan)
+    getData(id_laporan)    
 
     if (!ListLaporanClicked) {
         var timeline = anime.timeline({ autoplay: false })
@@ -105,16 +105,12 @@ var animateLanding = anime({
 })
 
 function showDetail(data_laporan) {
-
-    console.log(data_laporan);
-    if(data_laporan.report_status == 0){
-        $('#status-laporan').removeClass().addClass('ui mini red label')
-    }else if(data_laporan.report_status == 1){
-        $('#status-laporan').removeClass().addClass('ui mini yellow label')
-    }else{
-        $('#status-laporan').removeClass().addClass('ui mini green label')
-    }
-
+    
+    let colors = ['red', 'yellow', 'green']  
+    console.log(data_laporan)
+    
+    
+    $('#status-laporan').removeClass().addClass('ui mini '+colors[data_laporan.report_status]+' label')
     $('#status-laporan').html(data_laporan.status)
     $('#violation-laporan').html(data_laporan.violation)
     $('#created-laporan').html(data_laporan.created)
@@ -122,8 +118,25 @@ function showDetail(data_laporan) {
     $('#username-laporan').html(data_laporan.username)
     $('#location-laporan').html(data_laporan.location)
     $('#evidence-laporan').attr('src', data_laporan.path)    
-    $('#form-update, #form-delete').attr('action', '/admin/report/'+data_laporan.id)        
-    $('#status-verifikasi').html(data_laporan.status)
+    $('#form-update, #form-delete').attr('action', '/admin/report/'+data_laporan.id)  
+        
+    switch(data_laporan.report_status) {
+        case 0:            
+            $('input[name=report_status]').val('1')
+            $('#update-laporan').html('VERIFIKASI')
+            break
+        case 1:        
+            $('input[name=report_status').val('2')
+            $('#update-laporan').html('TAMBAH POINT')
+            break
+        case 2:                  
+            $('input[name=report_status').val('3')
+            $('#update-laporan').html('SELESAI')
+            break
+        default:            
+            break
+            
+    }
 }
 
 function getData(id_laporan) {
@@ -137,11 +150,7 @@ function getData(id_laporan) {
     });
 }
 
-$('#update-laporan').click(function() {
-    $('#form-update').submit()
+$('#delete-laporan').click(function() {
+   $('#form-delete').submit();        
 })
 
-$('#delete-laporan').click(function() {
-    console.log('true');  
-    $('#form-delete').submit() 
-})

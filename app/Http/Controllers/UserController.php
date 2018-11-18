@@ -17,7 +17,7 @@ class UserController extends Controller
 
         $reports = Report::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
         $report_status = ['Belum diverifikasi', 'Terverifikasi', 'Selesai'];
-        $colors = ['red', 'blue', 'green'];
+        $colors = ['red', 'yellow', 'green'];
 
         $userData = [
             'name' => Auth::user()->name,

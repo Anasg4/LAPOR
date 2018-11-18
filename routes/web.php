@@ -36,4 +36,5 @@ Route::get('/admin/reward/add', 'RewardController@add')->middleware('admin');
 Route::post('/admin/reward/store', 'RewardController@store')->middleware('admin');
 
 Route::get('/reward', 'RewardController@index')->middleware('auth');
+Route::get('/reward/test', 'RewardController@getReward');
 Route::post('/reward/{id}', 'RewardController@update')->middleware('auth');
