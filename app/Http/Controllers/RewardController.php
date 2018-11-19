@@ -34,15 +34,6 @@ class RewardController extends Controller
 
         $userReward = $user->rewards()->get();
              
-
-        // $rewardList = Reward::select('name', 'point')->where('user_id', null)->distinct()->get();
-
-        // $rewards= [];
-        // foreach($rewardList as $reward){
-        //     $rewardItem = Reward::select('id', 'name', 'point', 'image')->where('user_id', null)->where('name', $reward['name'])->first();
-        //     $rewards[] = $rewardItem;
-        // }
-
         return json_encode($user);
     }
 
