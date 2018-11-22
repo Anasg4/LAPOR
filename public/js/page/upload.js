@@ -1,9 +1,10 @@
 var buttondetail = $('#buttondetail')
 var buttonbukti = $('#buttonbukti')
+var sidebarOpened = false
 
-$('.ui.selection.dropdown').dropdown()
+$('.ui.dropdown').dropdown()
 
-$(buttonbukti).click(function(){
+$(buttonbukti).click(function () {
     $('#form-laporan').submit()
 })
 
@@ -11,7 +12,7 @@ var animateCard = anime({
     targets: '#content',
     delay: 200,
     opacity: [0, 1],
-    scale: [0,1],
+    scale: [0, 1],
     easing: [0.815, 0.060, 0.000, 0.845],
     elasticity: 800,
     duration: 500
@@ -76,6 +77,10 @@ function thumbnail(input) {
 $("#gambar").change(function () {
     thumbnail(this);
 });
+
+$('#bars').click(function () {
+    $('.mysidebar').toggle('slow')
+})
 
 $('.ui.form')
     .form({

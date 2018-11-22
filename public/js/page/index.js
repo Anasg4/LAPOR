@@ -154,3 +154,7 @@ $('#delete-laporan').click(function() {
    $('#form-delete').submit();        
 })
 
+
+$('#bars').click(function () {
+    $('.mysidebar').toggle('slow')
+})

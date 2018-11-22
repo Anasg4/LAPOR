@@ -12,33 +12,29 @@ use Illuminate\Support\Facades\DB;
 class RewardController extends Controller
 {
     public function index(){
-        // SELECT Jurusan, COUNT(*) AS `num` FROM mahasiswa GROUP BY Jurusan
-        $user = User::find(Auth::id());
-        $user->laporan = count($user->reports()->get());   
-        
+
+        $user = User::find(Auth::id());        
+        $user->laporan = count($user->reports()->get());       
         $userReward = $user->rewards()->get();
-
         $rewardList = Reward::select('name', 'point')->where('user_id', null)->distinct()->get();
-
         $rewards= [];
         foreach($rewardList as $reward){
-            $rewardItem = Reward::select('id', 'name', 'point', 'image')->where('user_id', null)->where('name', $reward['name'])->first();
+            $rewardItem = Reward::select('id', 'name', 'point', 'image', 'description')->where('user_id', null)->where('name', $reward['name'])->first();
             $rewards[] = $rewardItem;
         }        
 
         return view('reward.all')->with(compact('rewards', 'user', 'userReward'));
-    }
-
-    public function getReward(){
-        $user = User::find(Auth::id());
-
-        $userReward = $user->rewards()->get();
-             
-        return json_encode($user);
-    }
+    }    
 
     public function add(){
-        return view('admin.reward.add');
+        $user = User::find(Auth::id());       
+        $rewardList = Reward::select('name', 'point')->where('user_id', null)->distinct()->get();
+        $rewards= [];
+        foreach ($rewardList as $reward) {
+            $rewardItem = Reward::select('id', 'name', 'point', 'image', 'description')->where('user_id', null)->where('name', $reward['name'])->first();
+            $rewards[] = $rewardItem;
+        }
+        return view('admin.reward.add')->with(compact('rewards', 'user'));
     }
 
     public function store(Request $request){
@@ -57,10 +53,11 @@ class RewardController extends Controller
             $reward->point = $request['point'];
             $reward->redeem_code = $this->generateRedeemCode();
             $reward->image = $id.'.'.$fileExt;
+            $reward->description = $request['description'];
 
             $reward->save();
         }
-        return redirect('/admin/cockpit');
+        return redirect('/admin/reward/add');
     }
 
     public function show($name){
@@ -82,6 +79,10 @@ class RewardController extends Controller
         else{
             return redirect()->back()->with('errors', 'Poin tidak cukup');
         }
+    }
+
+    public function delete($name){
+        $rewards =  Reward::where('user_id', null)->where('name', $name)->delete();        
     }
 
     private function generateId(){

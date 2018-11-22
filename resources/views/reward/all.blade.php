@@ -9,7 +9,7 @@
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
     <link href="https://fonts.googleapis.com/css?family=Karla:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ url('css/page/index.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url('css/page/reward.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url('css/semantic.css') }}" />
     <script src="{{ url('js/jquery.min.js') }}"></script>
     <script src="{{ url('js/anime.min.js') }}"></script>
@@ -17,13 +17,42 @@
 
 <body class="background">
 
+    <div class="mysidebar">
+        <div class="ui vertical menu">
+            <a href="/" class="item">
+                Home
+                <i class="home icon"></i>
+            </a>
+            <a href="/report/create" class="item">
+                Upload
+                <i class="newspaper icon"></i>
+            </a>
+            <a href="/reward" class="item">
+                Reward
+                <i class="credit card icon"></i>
+            </a>            
+            <a href="/login" class="item">
+                <div class="ui fluid button keluar">KELUAR</div>
+            </a>
+        </div>
+    </div>
+
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
         <a class="item logo" href="/">
             Lapor.
         </a>
-        <div class="right menu">
-            <a class="item" href="/admin/reward/add">Reward</a>
+
+        <div class="right menu" id="bars">        
+            <a class="item">
+                <i class="bars grey large icon"></i>
+            </a>
+        </div>
+
+        <div class="right menu" id="right-menu">
+            <a class="item" href="/report/create">Upload</a>
+            <a class="item" href="/reward">Reward</a>
+            <a class="item" href="/">Home</a>
             <a href="/logout" class="item">
                 <div class="ui button menubar">Keluar</div>
             </a>
@@ -31,7 +60,7 @@
     </div>
 
     <div class="ui column stackable grid panel-container">
-        <div class="four wide column left-panel">
+        <div class="four wide column left-panel" id="user-detail">
             <div class="ui fluid card">
                 <div class="image">
                     <img src="/image/matthew.png">
@@ -53,11 +82,11 @@
                         {{ $user['points']}} Pts.
                     </span>
                     <span class="right floated">
-                        <i class="tag icon"></i>                        
+                        <i class="tag icon"></i>
                         {{ $user['laporan']}} Laporan
                     </span>
                     <div>
-                    <i class="credit card yellow icon"></i>
+                        <i class="credit card yellow icon"></i>
                         {{ count($userReward) }} Voucher
                     </div>
                 </div>
@@ -66,13 +95,32 @@
 
 
         <!-- Laporan Container -->
-        <div class="ten wide column laporan-container">
+        <div class="ten wide column reward-container">
+
+            @if(count($userReward) > 0)
+            <div class="ui four stackable cards">
+
+                @foreach($userReward as $reward)
+                <div class="ui link card user reward" data-reward-id="{{ $reward['redeem_code'] }}">
+                    <div class="image">
+                        <img src="/storage/voucher/{{ $reward['image'] }}" alt="">
+                    </div>
+                    <div class="content">
+                        <p>
+                            {{$reward['name']}}
+                        </p>
+                    </div>
+                </div>
+                @endforeach
+
+            </div>
+            @endif
 
             <!-- laporan Panel Container of Items -->
-            <div class=" laporan-panel">
+            <div class="reward-panel">
 
-                <!-- ITEMS -->
-                <div class="ui divided items" id="list-laporan">
+                <!-- Available Rewards -->
+                <div class="ui divided items" id="list-reward">
 
                     @if(count($rewards) == 0)
                     <div class="item">
@@ -83,15 +131,15 @@
                             </div>
                         </div>
                     </div>
-                    @else 
+                    @else
                     <div class="item">
                         <div class="content">
-                            <div class="header">Voucher yang tersedia</div>                            
+                            <div class="header">Voucher yang tersedia</div>
                         </div>
                     </div>
-                    
+
                     @foreach ($rewards as $reward)
-                    <div class="item laporan" data-reward-id="{{ $reward['id'] }}">
+                    <div class="item reward" data-reward-id="{{ $reward['id'] }}">
                         <div class="ui tiny image">
                             <img src="/storage/voucher/{{ $reward['image'] }}" alt="">
                         </div>
@@ -101,13 +149,13 @@
                                 <span>{{ $reward['point'] }} point</span>
                             </div>
                             <div class="description">
-                                <p>Voucher indomaret</p>
+                                <p>{{ $reward['description']}}</p>
                             </div>
                             <form action="/reward/{{ $reward['id']}}" method="POST" id="form-reward">
                                 @csrf
-                                <button class="ui right floated mini button back" id="claim-reward">GET</button>
+                                <button class="ui right floated mini button back" id="claim-reward">CLAIM</button>
                             </form>
-                        </div>                        
+                        </div>
                     </div>
                     @endforeach @endif
 
@@ -120,30 +168,26 @@
         </div>
         <!-- END of Laporan container -->
 
+    </div>
 
-        <!-- Detail Panel -->
-        <div class="five wide column detail-panel" id="detail-panel">
-
-            <div class="ui fluid link card detail">
-                <div class="content" id="back-panel">
-
-                    <div class="header" id="nama-reward"></div>
-                    <div class="meta">
-                        <span id="point-reward"></span>
-                    </div>                    
-
-                </div>                                
-
+    <div class="ui mini modal">
+        <div class="header" id="reward-title"></div>
+        <div class="content">
+            <div class="ui fluid action input">
+                <input type="text" value="http://ww.short.url/c0opq" readonly id='reward-code'>
+                <button class="ui teal right labeled icon button copy" id="button-copy">
+                    <i class="copy icon"></i>
+                    Copy
+                </button>
             </div>
-        
-            <div class="ui fluid card">
-                <div class="ui image">
-                    <img src="/image/Wireframe.png" alt="" id="image-reward">
+            <div class="ui positive message transition hidden copy">
+                <i class="close icon"></i>
+                <div class="header">
+                    Berhasil disalin!
                 </div>
+                <p>Silahkan gunakan kode untuk pembayaran sesuai voucher</p>
             </div>
-
         </div>
-        <!-- END of Detail Panel -->
 
     </div>
 

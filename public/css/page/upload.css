@@ -9,9 +9,8 @@
     --fade: #333333c2;
 }
 
-.background {
-    /* background: linear-gradient(128deg, #48bae7, #b940ac); */
-    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);    
+.background.pushable, .background {    
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%) !important;    
     color: black;
     height: 100%;
     background-position: center;
@@ -38,20 +37,14 @@
     border: 0 !important;
 }
 
-.button.next, .button.prev, .button.gambar {
-    font-family: 'karla', sans-serif !important;
-    margin-bottom: -2px !important;
+.button.next, .button.prev, .button.gambar, .button.keluar {
+    font-family: 'karla', sans-serif !important;    
     background: #48bae7 !important;
-    color: white !important;
-    height: 3em !important;
+    color: white !important;    
 }
 
 .button:hover {
     background: var(--primarydark) !important;
-}
-
-#buttongambar {
-    margin-bottom: 10px !important;
 }
 
 .ui.action.input {
@@ -68,19 +61,46 @@
     opacity: 0;
 }
 
+#bars, .mysidebar{
+    display: none;    
+}
+
 @media only screen and (max-width: 768px) {
-    #content{
-        opacity: 0;
+
+    .mysidebar{                
+        padding-top: 5em !important;        
+        position: fixed !important; 
+        z-index: 20 !important;
+        width: 100% !important;
+        height: 100%;                     
     }
+    
+    .ui.vertical.menu{
+        padding-right: 0em !important;        
+        width: 100% !important;
+        height: max-content !important; 
+    }
+
+    #bars{
+        display: inherit !important;        
+    }
+
+        
+    #right-menu{
+        display: none !important;
+    }
+    
     .ui.menu {
-        padding-left: 2em !important;
-        padding-right: 2em !important;
+        padding-left: 0em !important;
+        padding-right: 0em !important;
     }
+
     .content-laporan {
         margin-top: 2em !important;
     }
     
     #content{
+        opacity: 0;
         margin-top: 3em !important;
         margin-left: 0.5em !important;
         margin-right: 0.5em !important;

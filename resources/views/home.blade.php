@@ -17,12 +17,41 @@
 
 <body class="background">
 
+    <div class="mysidebar">
+        <div class="ui vertical menu">
+            <a href="/" class="item">
+                Home
+                <i class="home icon"></i>
+            </a>
+            <a href="/report/create" class="item">
+                Upload
+                <i class="newspaper icon"></i>
+            </a>
+            <a href="/reward" class="item">
+                Reward
+                <i class="credit card icon"></i>
+            </a>            
+            <a href="/login" class="item">
+                <div class="ui fluid button keluar">KELUAR</div>
+            </a>
+        </div>
+    </div>
+
+
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
         <a class="item logo" href="/">
             Lapor.
         </a>
-        <div class="right menu">
+        
+        <div class="right menu" id="bars">        
+            <a class="item">
+                <i class="bars grey large icon"></i>
+            </a>
+        </div>
+
+        <div class="right menu" id="right-menu">
+            <a class="item" href="/report/create">Upload</a> 
             <a class="item" href="/reward">Reward</a>            
             <a class="item" href="/">Home</a>            
             <a href="/logout" class="item">
@@ -32,8 +61,10 @@
     </div>
 
     <div class="ui column stackable grid panel-container">
+
         <div class="four wide column left-panel">
-            <div class="ui fluid card">
+
+            <div class="ui fluid card" id="user-detail">
                 <div class="image">
                     <img src="/image/matthew.png">
                 </div>

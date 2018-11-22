@@ -16,32 +16,43 @@ var animateLanding = anime({
     easing: [0.815, 0.060, 0.000, 0.845]
 })
 
-function showDetail(data_reward) {
 
-    console.log(data_reward);
-    
-    $('#nama-reward').html(data_reward.name)
-    $('#point-reward').html(data_reward.point)    
-    $('#image-reward').attr('src', '/storage/voucher/'+ data_reward.name +'.jpg')    
-    $('#form-reward').attr('action', '/reward/'+data_reward.id)            
-}
+$('.user.reward')
+    .popup({
+        content: 'Klik untuk dapatkan kode unik',
+        variation: 'tiny inverted',
+        position: 'bottom left',
+        transition: 'fade up'
+    })
 
-function getData(id_laporan) {
-    $.ajax({
-        url: "/reward" + id_laporan,
-        method: "GET",
-        dataType: "JSON",
-        success: function (result) {
-            showDetail(result)
-        }
-    });
-}
 
-$('#update-laporan').click(function() {
-    $('#form-update').submit()
+$('.ui.button.copy').click(function() {    
+    $('#reward-code').select()
+
+    document.execCommand('copy')
+
+    $('.message.copy')
+    .transition('fade in', 500)
+
 })
 
-$('#delete-laporan').click(function() {
-    console.log('true');  
-    $('#form-delete').submit() 
+
+$('.message .close')
+  .on('click', function() {
+    $(this)
+      .closest('.message')
+      .transition('fade')    
+  })
+
+$('.user.reward').click(function() {
+    const code = $(this).data('reward-id').toUpperCase()
+    const name = $(this).find('p').first().html()
+    
+    $('#reward-code').val(code)
+    $('#reward-title').html(name)
+    $('.ui.modal').modal('show')    
+})
+
+$('#bars').click(function () {
+    $('.mysidebar').toggle('slow')
 })

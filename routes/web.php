@@ -34,6 +34,7 @@ Route::delete('/admin/report/{id}', 'AdminController@destroy')->middleware('admi
 
 Route::get('/admin/reward/add', 'RewardController@add')->middleware('admin');
 Route::post('/admin/reward/store', 'RewardController@store')->middleware('admin');
+Route::post('/admin/reward/delete/{name}', 'RewardController@delete')->middleware('admin');
 
 Route::get('/reward', 'RewardController@index')->middleware('auth');
 Route::get('/reward/test', 'RewardController@getReward');

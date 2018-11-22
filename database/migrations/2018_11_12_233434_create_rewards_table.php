@@ -21,6 +21,7 @@ class CreateRewardsTable extends Migration
             $table->primary('id');
             $table->string('name');
             $table->integer('point');
+            $table->string('image');
             $table->string('redeem_code', 6)->unique();
             $table->integer('user_id')->nullable($value = true);
             $table->foreign('user_id')->references('id')->on('users');

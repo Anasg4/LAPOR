@@ -1,4 +1,4 @@
-@import "form.css";
+/* @import "form.css"; */
 @import "menubar.css";
 @import "text.css";
 
@@ -12,7 +12,8 @@
     --fade: #333333c2;
 }
 
-.background {    
+.background {
+    /* background: linear-gradient(128deg, #48bae7, #b940ac); */
     background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);    
     color: black;
     height: 100%;
@@ -41,18 +42,22 @@
 .field{
     position: inherit !important;
 }
-
 .panel-container{
     padding-top: 7em !important;
     margin-left: 9em !important;   
     opacity: 0; 
 }
 
-.laporan-panel{    
+.reward-panel{    
     box-shadow: 0px 1px 30px 0px rgba(34, 36, 38, 0.1) !important;    
     border-radius: 5px !important;
     background: #fff;    
     padding: 1.5em;     
+    margin-bottom: 2em !important;
+}
+
+.ui.cards{
+    margin-bottom: 1em !important;
 }
 
 #detail-panel{
@@ -64,8 +69,9 @@
     display: none;    
 }
 
-@media only screen and (max-width: 768px) { 
-    
+
+@media only screen and (max-width: 768px) {    
+
     .mysidebar{                
         padding-top: 5em !important;        
         position: fixed !important; 
@@ -79,11 +85,11 @@
         width: 100% !important;
         height: max-content !important; 
     }
-
+    
     #bars{
         display: inherit !important;        
     }
-
+    
         
     #right-menu{
         display: none !important;
@@ -97,11 +103,7 @@
     #user-detail{
         display: none;
     }
-
-    .panel-container{
-        padding-top: 6em !important;
-    }
-
+   
 }
 
 

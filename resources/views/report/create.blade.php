@@ -18,13 +18,43 @@
 </head>
 
 <body class="background">
+
+    <div class="mysidebar">
+        <div class="ui vertical menu">
+            <a href="/" class="item">
+                Home
+                <i class="home icon"></i>
+            </a>
+            <a href="/report/create" class="item">
+                Upload
+                <i class="newspaper icon"></i>
+            </a>
+            <a href="/reward" class="item">
+                Reward
+                <i class="credit card icon"></i>
+            </a>            
+            <a href="/login" class="item">
+                <div class="ui fluid button keluar">KELUAR</div>
+            </a>
+        </div>
+    </div>
+
     <!-- Menu bar item -->
     <div class="ui top fixed menu">
         <a class="item logo" href="/">
             Lapor.
         </a>
-        <div class="right menu">
-            <a class="item" href="#">Bantuan</a>
+
+        <div class="right menu" id="bars">        
+            <a class="item">
+                <i class="bars grey large icon"></i>
+            </a>
+        </div>
+
+        <div class="right menu" id="right-menu">
+            <a class="item" href="/report/create">Upload</a>
+            <a class="item" href="/reward">Reward</a>
+            <a class="item" href="/">Home</a>
             <a href="/login" class="item">
                 <div class="ui button menubar">Keluar</div>
             </a>
@@ -55,7 +85,9 @@
                                         <div class="item" data-value="Pelanggaran Rambu">Pelanggaran Rambu</div>
                                         <div class="item" data-value="Kelengkapan Berkendara">Kelengkapan Berkendara</div>
                                         <div class="item" data-value="Melawan Arus">Melawan Arus</div>
-                                        <div class="item" data-value="Kendaraan Tidak Sesuai Standar">Kendaraan Tidak Sesuai Standar</div>
+                                        <div class="item" data-value="Kendaraan Tidak Sesuai Standar">Kendaraan Tidak Sesuai
+                                            Standar
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -87,15 +119,21 @@
                                 <div class="ui action input">
                                     <input type="file" name="image" id="gambar" style="display: none">
                                     <input type="text" placeholder="filename" disabled id="filename">
-                                    <label class="ui teal right labeled icon button gambar" id="buttongambar" for="gambar">
-                                        <i class="camera icon"></i>
-                                        Cari
-                                    </label>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <button class="ui bottom atached button next" id="buttonbukti" type="submit">BUAT LAPORAN</button>
+                </div>
+
+                <div class="ui fluid card">
+                    <label class="ui large button next" id="buttongambar" for="gambar">
+                        <i class="camera icon"></i>
+                        UNGGAH GAMBAR
+                    </label>
+                </div>
+
+                <div class="ui fluid card">
+                    <button class="ui large button next" id="buttonbukti" type="submit">BUAT LAPORAN</button>
                 </div>
 
 
@@ -120,7 +158,7 @@
                 <div class="ui mini modal size">
                     <div class="header">Berkas melebihi batas maksimal</div>
                     <div class="content">
-                        <p>Bukti yang dapat anda unggah maksimal berukuran 4mb</p>                        
+                        <p>Bukti yang dapat anda unggah maksimal berukuran 4mb</p>
                     </div>
                 </div>
             </div>
