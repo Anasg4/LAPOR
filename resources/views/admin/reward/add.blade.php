@@ -87,7 +87,7 @@
             </div>
 
             <div class="ui fluid card">
-                <div class="ui button create" id="open-create-reward">BUAT LAPORAN</div>
+                <div class="ui button create" id="open-create-reward">BUAT REWARD</div>
             </div>
         </div>
 
@@ -161,7 +161,7 @@
             </div>
 
             <div class="ui fluid card">
-                <button class="ui button create" id="button-reward">BUAT LAPORAN</button>
+                <button class="ui button create" id="button-reward">BUAT REWARD</button>
             </div>
 
 
@@ -189,7 +189,7 @@
                         <div class="content">
                             <div class="header">Tidak ada reward</div>
                             <div class="meta">
-                                <p>Silahkan kembali lagi nanti ketika terdapat reward baru</p>
+                                <p>Silahkan klik tombol buat reward dibawah panel profil.</p>
                             </div>
                         </div>
                     </div>
