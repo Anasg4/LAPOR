@@ -102,9 +102,8 @@
                         <div class="content">
                             <div class="header">Laporan tidak ditemukan</div>
                             <div class="meta">
-                                <p>Anda belum pernah membuat laporan silakan klik tombol dibawah ini untuk memulai!</p>
-                            </div>
-                            <a href="/report/create" class="ui fluid button create">BUAT LAPORAN</a>
+                                <p>Belum ada user yang pernah membuat laporan.</p>
+                            </div>                            
                         </div>
                     </div>
                     @else @foreach ($reports as $report)
