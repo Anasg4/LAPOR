@@ -43,7 +43,7 @@ class RewardController extends Controller
         $id = $this->generateId();
         
         $path = Storage::putFileAs(
-            'storage/voucher', $request->file('image'), $id.'.'.$fileExt
+            'public/', $request->file('image'), $id.'.'.$fileExt
         );
 
         for($i=0;$i<$request['amount'];$i++){
