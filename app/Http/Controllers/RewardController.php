@@ -83,6 +83,7 @@ class RewardController extends Controller
 
     public function delete($name){
         $rewards =  Reward::where('user_id', null)->where('name', $name)->delete();        
+        return redirect('/admin/reward/add');
     }
 
     private function generateId(){
