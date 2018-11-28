@@ -49,9 +49,8 @@
             </a>
         </div>
 
-        <div class="right menu" id="right-menu">
-            <a class="item" href="/report/create">Upload</a>
-            <a class="item" href="/reward">Reward</a>
+        <div class="right menu" id="right-menu">            
+            <a class="item" href="/admin/add/reward">Create Reward</a>
             <a class="item" href="/">Home</a>
             <a href="/logout" class="item">
                 <div class="ui button menubar">Keluar</div>

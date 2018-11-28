@@ -5,6 +5,9 @@ var sidebarOpened = false
 $('.ui.dropdown').dropdown()
 
 $(buttonbukti).click(function () {
+    if($('.imgbuffer').attr('src') == ""){
+        return;
+    }
     $('#form-laporan').submit()
 })
 
@@ -81,6 +84,8 @@ $("#gambar").change(function () {
 $('#bars').click(function () {
     $('.mysidebar').toggle('slow')
 })
+
+
 
 $('.ui.form')
     .form({
